@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 use sisFacturacion\Http\Request;
 
+use sisFacturacion\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
+
+use Illuminate\Support\Facades\Redirect;
+
+use sisFacturacion\Http\Request\CategoriaFormRequest;
+
+use DB;
+
 
 
 class CategoriaController extends Controller
