@@ -23,9 +23,19 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request)
+        {
+
+            $query = trim($request->get('seachText'));
+            $categorias = DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
+            ->where ('condicion','=','1')
+            ->orderBy('idcategoria','desc')
+            ->paginate(7);
+            return view('almacen.categoria.index',["categorias"=>$categorias,"seachText"=>$query]);
+
+        }
     }
 
     /**
@@ -35,7 +45,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('almacen.categoria.create');
     }
 
     /**
@@ -44,9 +54,14 @@ class CategoriaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriaFormRequest $request)
     {
-        //
+        $categoria = new Categoria;
+        $categoria->nombre=$request->get('nombre');
+        $categoria->descripcion=$request->get('descripcion');
+        $categoria->condicion='1';
+        $categoria->save();
+        return Redirect::to('almacen/categoria')
     }
 
     /**
@@ -57,7 +72,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('almacen.categoria.show', ["Categoria"=>Categoria::findOrFail($id)])
     }
 
     /**
@@ -68,7 +83,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('almacen.categoria.edit', ["Categoria"=>Categoria::findOrFail($id)])
     }
 
     /**
@@ -78,9 +93,13 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriaFromRequest $request, $id)
     {
-        //
+        $categoria=Categoria::findOrFail($id);
+        $categoria->nombre=$request->get('nombre');
+        $categoria->descripcion=$request->get('descripcion');
+        $categoria->update();
+        return Redirect::to('almacen/categoria');
     }
 
     /**
@@ -91,6 +110,10 @@ class CategoriaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria=Categoria::findOrFail($id);
+        $categoria->condicion='0';
+        $categoria->update();
+        return Redirect::to('almacen/categoria');
+
     }
 }
