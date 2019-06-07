@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
-//use sisFacturacion\Http\Request;
+use sisFacturacion\Http\Request;
 
 use sisFacturacion\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
 
@@ -93,7 +93,7 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoriaFromRequest $request, $id)
+    public function update(CategoriaFormRequest $request, $id)
     {
         $categoria=Categoria::findOrFail($id);
         $categoria->nombre=$request->get('nombre');
