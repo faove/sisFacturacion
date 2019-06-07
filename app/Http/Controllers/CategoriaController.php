@@ -28,12 +28,12 @@ class CategoriaController extends Controller
         if ($request)
         {
 
-            $query = trim($request->get('seachText'));
+            $query = trim($request->get('searchText'));
             $categorias = DB::table('categoria')->where('nombre','LIKE','%'.$query.'%')
             ->where ('condicion','=','1')
             ->orderBy('idcategoria','desc')
             ->paginate(7);
-            return view('almacen.categoria.index',["categorias"=>$categorias,"seachText"=>$query]);
+            return view('almacen.categoria.index',["categorias"=>$categorias,"searchText"=>$query]);
 
         }
     }
