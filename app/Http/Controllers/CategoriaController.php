@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use sisFacturacion\Http\Request;
+//use sisFacturacion\Http\Request;
 
 use sisFacturacion\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
 
@@ -61,7 +61,7 @@ class CategoriaController extends Controller
         $categoria->descripcion=$request->get('descripcion');
         $categoria->condicion='1';
         $categoria->save();
-        return Redirect::to('almacen/categoria')
+        return Redirect::to('almacen/categoria');
     }
 
     /**
@@ -72,7 +72,7 @@ class CategoriaController extends Controller
      */
     public function show($id)
     {
-        return view('almacen.categoria.show', ["Categoria"=>Categoria::findOrFail($id)])
+        return view('almacen.categoria.show', ["Categoria"=>Categoria::findOrFail($id)]);
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        return view('almacen.categoria.edit', ["Categoria"=>Categoria::findOrFail($id)])
+        return view('almacen.categoria.edit', ["Categoria"=>Categoria::findOrFail($id)]);
     }
 
     /**
