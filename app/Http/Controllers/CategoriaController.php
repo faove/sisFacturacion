@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace sisFacturacion\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
-use sisFacturacion\Http\Request;
+use sisFacturacion\Http\Requests;
 
 use sisFacturacion\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
 
 use Illuminate\Support\Facades\Redirect;
 
-use sisFacturacion\Http\Request\CategoriaFormRequest;
+use sisFacturacion\Http\Requests\CategoriaFormRequest;
 
 use DB;
 
@@ -18,12 +18,16 @@ use DB;
 
 class CategoriaController extends Controller
 {
+    public function __construct()
+    {
+        
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(CategoriaFormRequest $request)
     {
         if ($request)
         {
@@ -56,7 +60,7 @@ class CategoriaController extends Controller
      */
     public function store(CategoriaFormRequest $request)
     {
-        $categoria = new Categoria;
+        $categoria = new categoria();
         $categoria->nombre=$request->get('nombre');
         $categoria->descripcion=$request->get('descripcion');
         $categoria->condicion='1';
