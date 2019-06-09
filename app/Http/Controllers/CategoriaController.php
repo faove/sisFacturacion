@@ -1,16 +1,16 @@
 <?php
 
-namespace sisFacturacion\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use sisFacturacion\Http\Requests;
+use App\Http\Requests;
 
-use sisFacturacion\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
+use App\Categoria; //Esto hace referencia al modelo categoria que esta en app/Categoria.php
 
 use Illuminate\Support\Facades\Redirect;
 
-use sisFacturacion\Http\Requests\CategoriaFormRequest;
+use App\Http\Requests\CategoriaFormRequest;
 
 use DB;
 
@@ -27,7 +27,7 @@ class CategoriaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CategoriaFormRequest $request)
+    public function index(Request $request)
     {
         if ($request)
         {
