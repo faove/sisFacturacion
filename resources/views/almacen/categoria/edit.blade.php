@@ -14,9 +14,11 @@
 				</ul>
 			</div>
 			@endif
-
-			{!!Form::model($categoria,array('almacen.categoria.update',$categoria->idcategoria)) !!}
-				{{ Form::token() }}
+		
+			{{-- {!!Form::model($categoria,'method'=>'PATCH', array('route' => array('almacen.categoria.update',$categoria->idcategoria)))!!} --}}
+			{{-- {!!Form::model($categoria,['method'=>'PATCH', 'route' => ['almacen.categoria.update',$categoria->idcategoria]])!!} --}}
+			{!!Form::model($categoria,['method'=>'PATCH','action' => ['CategoriaController@update',$categoria->idcategoria]])!!}
+			{{ Form::token() }}
 				<div class="form-group">
 					<label for="nombre">Nombre</label>
 					<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
@@ -29,8 +31,7 @@
 					<button class="btn btn-primary" type="submit">Guardar</button>
 					<button class="btn btn-danger" type="reset">Cancelar</button>
 				</div>
-
-				{!!Form::close()!!}
+			{!!Form::close()!!}
 		</div>
 	</div>
 @endsection
