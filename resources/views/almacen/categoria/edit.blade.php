@@ -17,6 +17,7 @@
 		
 			{{-- {!!Form::model($categoria,'method'=>'PATCH', array('route' => array('almacen.categoria.update',$categoria->idcategoria)))!!} --}}
 			{{-- {!!Form::model($categoria,['method'=>'PATCH', 'route' => ['almacen.categoria.update',$categoria->idcategoria]])!!} --}}
+			
 			{!!Form::model($categoria,['method'=>'PATCH','action' => ['CategoriaController@update',$categoria->idcategoria]])!!}
 			{{ Form::token() }}
 				<div class="form-group">

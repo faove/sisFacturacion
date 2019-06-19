@@ -15,7 +15,8 @@
 		</div>
 	</div>
 
-		{!!Form::model($articulo,['method'=>'PATCH','route'=>['almacen.articulo.update',$articulo->idarticulo],'files'=>'true'])!!}
+		{{-- {!!Form::model($articulo,['method'=>'PATCH','route'=>['almacen.articulo.update',$articulo->idarticulo],'files'=>'true'])!!} --}}
+		{!!Form::model($articulo,['method'=>'PATCH','action' => ['ArticuloController@update',$articulo->idarticulo],'files'=>'true'])!!}		
         {{Form::token()}}
         <div class="row">
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -28,15 +29,13 @@
 			<div class="form-group">
 				<label>Categoria</label>
 				<select name="idcategoria" class="form-control">
-					@foreach($categorias as $cat)
+					@foreach($categoria as $cat)
 						@if ($cat->idcategoria==$articulo->idcategoria)
 							<option value="{{$cat->idcategoria}}" selected>{{$cat->nombre}}</option>
 						@else
 							<option value="{{$cat->idcategoria}}">{{$cat->nombre}}</option>
 						@endif
 					@endforeach
-
-					
 				</select>
 			</div>
 		</div>
@@ -55,7 +54,7 @@
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="descripcion">Descripción</label>
-				<input type="text" name="descripcion" value="{{$articulo->descripcion}}"  class="form-control">
+				<input type="text" name="descripcion" value="{{$articulo->descripcion}}"  class="form-control" placeholder="Descripción del artículo ...">
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -63,7 +62,7 @@
 				<label for="imagen">Imagen</label>
 				<input type="file" name="imagen"  class="form-control">
 				@if (($articulo->imagen)!="")
-					<img src="{{asset('imagen/articulos'.$articulo->imagen)}}" height="300px" widht="300px">
+					<img src="{{asset('imagenes/articulos'.$articulo->imagen)}}" height="300px" widht="300px">
 				@endif
 			</div>
 		</div>
