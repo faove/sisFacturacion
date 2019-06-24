@@ -48,7 +48,7 @@
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
 			<div class="form-group">
 				<label for="stock">Stock</label>
-				<input type="text" name="stock" required value="{{$articulo->stock}}" class="form-control" >
+				<input type="text" name="stock" required value="{{$articulo->stock}}" class="form-control">
 			</div>
 		</div>
 		<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12">
@@ -61,8 +61,11 @@
 			<div class="form-group">
 				<label for="imagen">Imagen</label>
 				<input type="file" name="imagen"  class="form-control">
+
 				@if (($articulo->imagen)!="")
-					<img src="{{asset('imagenes/articulos'.$articulo->imagen)}}" height="300px" widht="300px">
+
+					<img src="{{asset('imagenes/articulos/'.$articulo->imagen)}}" height="300px" widht="300px">
+
 				@endif
 			</div>
 		</div>
