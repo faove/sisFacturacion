@@ -62,7 +62,8 @@ class ProveedorController extends Controller
         $persona = new Persona();
         $persona->tipo_persona='Proveedor';
         $persona->nombre=$request->get('nombre');
-        $persona->tipo_documento=$request->get('tipo_documento');
+        $persona->tipo_documento=$request->get('tipo_documento'); 	
+        $persona->num_documento=$request->get('num_documento');
         $persona->direccion=$request->get('direccion');
         $persona->telefono=$request->get('telefono');
         $persona->email=$request->get('email');
@@ -105,7 +106,8 @@ class ProveedorController extends Controller
         $persona=Persona::findOrFail($id);
         //$persona->nombre=$request->get('nombre');
         $persona->nombre=$request->get('nombre');
-        $persona->tipo_documento=$request->get('tipo_documento');
+        $persona->tipo_documento=$request->get('tipo_documento');         	
+        $persona->num_documento=$request->get('num_documento');
         $persona->direccion=$request->get('direccion');
         $persona->telefono=$request->get('telefono');
         $persona->email=$request->get('email');
@@ -127,4 +129,5 @@ class ProveedorController extends Controller
         $persona->update();
         return Redirect::to('compras/proveedor');
 
-    }}
+    }
+}

@@ -38,17 +38,17 @@
 				<select name="tipo_documento" class="form-control">					
 
 					@if ($persona->tipo_documento=='Ced')
-						<option value="Ced" selected>Cédula</option>	
-						<option value="rif">RIF</option>	
-						<option value="Pas">Pasaporte</option>
+						<option value="CED" selected>Cédula</option>	
+						<option value="RIF">RIF</option>	
+						<option value="PAS">Pasaporte</option>
 					@elseif ($persona->tipo_documento=='rif')
-						<option value="Ced">Cédula</option>	
-						<option value="rif" selected>RIF</option>	
-						<option value="Pas">Pasaporte</option>
+						<option value="CED">Cédula</option>	
+						<option value="RIF" selected>RIF</option>	
+						<option value="PAS">Pasaporte</option>
 					@else
-						<option value="Ced">Cédula</option>	
-						<option value="rif">RIF</option>	
-						<option value="Pas" selected>Pasaporte</option>	
+						<option value="CED">Cédula</option>	
+						<option value="RIF">RIF</option>	
+						<option value="PAS" selected>Pasaporte</option>	
 					@endif	
 				</select>
 
